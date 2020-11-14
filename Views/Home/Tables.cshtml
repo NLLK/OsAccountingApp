@@ -1,0 +1,82 @@
+﻿@{
+    ViewBag.Title = "Таблицы";
+}
+<h2>@ViewBag.Title.</h2>
+<div class="row">
+    <div class="col-sm-4">
+        <h3>Номера</h3>
+        <p>Таблица с информацией о номерах.</p>
+        <p>Содержит поля:</p>
+        <ul>
+            <li>Номер</li>
+            <li>Класс номера</li>
+            <li>Цена проживания</li>
+        </ul>
+        <a href="/rooms/Index" class="btn btn-primary" role="button">Перейти к таблице</a>
+    </div>
+    <div class="col-sm-4">
+        <h3>Гости</h3>
+        <p>Таблица с информацией о гостях.</p>
+        <p>Содержит поля:</p>
+        <ul>
+            <li>Индивидуальный индетификатор гостя</li>
+            <li>Фамилия, имя и отчество</li>
+            <li>Паспорт</li>
+            <li>Телефонный номер</li>
+            <li>E-mail</li>
+        </ul>
+        <a href="/guests/Index" class="btn btn-primary" role="button">Перейти к таблице</a>
+    </div>
+    <div class="col-sm-4">
+        <h3>Услуги</h3>
+        <p>Таблица с информацией о услугах.</p>
+        <p>Содержит поля:</p>
+        <ul>
+            <li>Код услуги</li>
+            <li>Название услуги</li>
+            <li>Цена услуги</li>
+        </ul>
+        <a href="/services/Index" class="btn btn-primary" role="button">Перейти к таблице</a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-4">
+        <h3>Сотрудники</h3>
+        <p>Таблица с информацией о сотрудниках.</p>
+        <p>Содержит поля:</p>
+        <ul>
+            <li>Код сотрудника</li>
+            <li>ФИО</li>
+        </ul>
+        <a href="/employees/Index" class="btn btn-primary" role="button">Перейти к таблице</a>
+    </div>
+    <div class="col-sm-4">
+        <h3>Оказание услуг</h3>
+        <p>Таблица с информацией об услугах, которые были оказаны,</p>
+        <p>и должны быть оказаны.</p>
+        <p>Содержит поля:</p>
+        <ul>
+            <li>Номер оказанной услуги, договор</li>
+            <li>Код услуги</li>
+            <li>Количество услуг</li>
+            <li>Дата оказания</li>
+            <li>Код сотрудника</li>
+            <li>Номер договора заселения</li>
+        </ul>
+        <a href="/provides/Index" class="btn btn-primary" role="button">Перейти к таблице</a>
+    </div>
+    <div class="col-sm-4">
+        <h3>Заселение</h3>
+        <p>Таблица с информацией о договорах заселения.</p>
+        <p>Содержит поля:</p>
+        <ul>
+            <li>Номер договора</li>
+            <li>Номер</li>
+            <li>ИИ гостя</li>
+            <li>Дата</li>
+            <li>Количество суток проживания</li>
+            <li>Код сотрудника</li>
+        </ul>
+        <a href="/checks/Index" class="btn btn-primary" role="button">Перейти к таблице</a>
+    </div>
+</div>

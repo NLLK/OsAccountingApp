@@ -13,17 +13,13 @@ namespace OsAccountingApp1.Controllers
             return View();
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
+        public ActionResult Functions()
+        { 
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Tables()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
     }
