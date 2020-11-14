@@ -4,79 +4,93 @@
 <h2>@ViewBag.Title.</h2>
 <div class="row">
     <div class="col-sm-4">
-        <h3>Номера</h3>
-        <p>Таблица с информацией о номерах.</p>
-        <p>Содержит поля:</p>
-        <ul>
-            <li>Номер</li>
-            <li>Класс номера</li>
-            <li>Цена проживания</li>
-        </ul>
-        <a href="/rooms/Index" class="btn btn-primary" role="button">Перейти к таблице</a>
-    </div>
-    <div class="col-sm-4">
-        <h3>Гости</h3>
-        <p>Таблица с информацией о гостях.</p>
-        <p>Содержит поля:</p>
-        <ul>
-            <li>Индивидуальный индетификатор гостя</li>
-            <li>Фамилия, имя и отчество</li>
-            <li>Паспорт</li>
-            <li>Телефонный номер</li>
-            <li>E-mail</li>
-        </ul>
-        <a href="/guests/Index" class="btn btn-primary" role="button">Перейти к таблице</a>
-    </div>
-    <div class="col-sm-4">
-        <h3>Услуги</h3>
-        <p>Таблица с информацией о услугах.</p>
-        <p>Содержит поля:</p>
-        <ul>
-            <li>Код услуги</li>
-            <li>Название услуги</li>
-            <li>Цена услуги</li>
-        </ul>
-        <a href="/services/Index" class="btn btn-primary" role="button">Перейти к таблице</a>
-    </div>
-</div>
-<div class="row">
-    <div class="col-sm-4">
-        <h3>Сотрудники</h3>
-        <p>Таблица с информацией о сотрудниках.</p>
+        <h3>Материально ответственные лица</h3>
+        <p>Таблица с информацией о МОЛ.</p>
         <p>Содержит поля:</p>
         <ul>
             <li>Код сотрудника</li>
             <li>ФИО</li>
+            <li>Дата рождения</li>
+            <li>Дата прибытия в организацию</li>
         </ul>
-        <a href="/employees/Index" class="btn btn-primary" role="button">Перейти к таблице</a>
+        <a href="/MOLs/Index" class="btn btn-primary" role="button">Перейти к таблице</a>
     </div>
     <div class="col-sm-4">
-        <h3>Оказание услуг</h3>
-        <p>Таблица с информацией об услугах, которые были оказаны,</p>
-        <p>и должны быть оказаны.</p>
+        <h3>Отделы</h3>
+        <p>Таблица с информацией о отделах.</p>
         <p>Содержит поля:</p>
         <ul>
-            <li>Номер оказанной услуги, договор</li>
-            <li>Код услуги</li>
-            <li>Количество услуг</li>
-            <li>Дата оказания</li>
-            <li>Код сотрудника</li>
-            <li>Номер договора заселения</li>
+            <li>Код отдела</li>
+            <li>Название отдела</li>
+            <li>Адрес</li>
         </ul>
-        <a href="/provides/Index" class="btn btn-primary" role="button">Перейти к таблице</a>
+        <a href="/units/Index" class="btn btn-primary" role="button">Перейти к таблице</a>
     </div>
     <div class="col-sm-4">
-        <h3>Заселение</h3>
-        <p>Таблица с информацией о договорах заселения.</p>
+        <h3>Назначение</h3>
+        <p>Таблица с информацией о назначении в отдел.</p>
         <p>Содержит поля:</p>
         <ul>
-            <li>Номер договора</li>
-            <li>Номер</li>
-            <li>ИИ гостя</li>
-            <li>Дата</li>
-            <li>Количество суток проживания</li>
+            <li>Код назначения</li>
             <li>Код сотрудника</li>
+            <li>Код отдела</li>
+            <li>Дата назначения</li>
         </ul>
-        <a href="/checks/Index" class="btn btn-primary" role="button">Перейти к таблице</a>
+        <a href="/assigments/Index" class="btn btn-primary" role="button">Перейти к таблице</a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-4">
+        <h3>Основные средства</h3>
+        <p>Таблица с информацией об основных средствах</p>
+        <p>Содержит поля:</p>
+        <ul>
+            <li>Код ОС</li>
+            <li>Класс ОС</li>
+            <li>Наименование ОС</li>
+            <li>Инвертарный номер</li>
+            <li>Норма износа</li>
+            <li>Дата начала обслуживания</li>
+            <li>Время обслуживания</li>
+        </ul>
+        <a href="/OS/Index" class="btn btn-primary" role="button">Перейти к таблице</a>
+    </div>
+    <div class="col-sm-4">
+        <h3>Прикрепление к ОС</h3>
+        <p>Таблица с информацией о прикреплении сотрудника к ОС.</p>
+        <p>Содержит поля:</p>
+        <ul>
+            <li>Код прикрепления</li>
+            <li>Код МОЛ</li>
+            <li>Код ОС</li>
+
+        </ul>
+        <a href="/pins/Index" class="btn btn-primary" role="button">Перейти к таблице</a>
+    </div>
+
+    <div class="col-sm-4">
+        <h3>Цены</h3>
+        <p>Таблица с историей цен ОС.</p>
+        <p>Содержит поля:</p>
+        <ul>
+            <li>Код элемента истории </li>
+            <li>Код ОС</li>
+            <li>Цена</li>
+            <li>Дата изменения цены</li>
+        </ul>
+        <a href="/costs/Index" class="btn btn-primary" role="button">Перейти к таблице</a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-4">
+        <h3>Класс ОС</h3>
+        <p>Таблица с информацией о классах ОС.</p>
+        <p>Содержит поля:</p>
+        <ul>
+            <li>Код класса</li>
+            <li>Название класса</li>
+            <li>Кодировка</li>
+        </ul>
+        <a href="/groups/Index" class="btn btn-primary" role="button">Перейти к таблице</a>
     </div>
 </div>
