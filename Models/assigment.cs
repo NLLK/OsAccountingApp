@@ -23,7 +23,7 @@ using System.ComponentModel.DataAnnotations;
         [DisplayName("Код отдела")]
         public int id_unit { get; set; }
         [DisplayName("Дата назначения")]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+               [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public System.DateTime arrivaldateunit { get; set; }
     
         public virtual MOL MOL { get; set; }

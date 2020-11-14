@@ -27,10 +27,10 @@ namespace OsAccountingApp1.Models
         [DisplayName("ФИО")]
         public string molname { get; set; }
         [DisplayName("Дата рождения")]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+               [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public System.DateTime birthday { get; set; }
         [DisplayName("Дата прибытия в организацию")]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+               [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public System.DateTime arivaldate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

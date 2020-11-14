@@ -23,7 +23,7 @@ namespace OsAccountingApp1.Models
         [DisplayName("Цена")]
         public int cost1 { get; set; }
         [DisplayName("Дата изменения цены")]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public System.DateTime costchangedate { get; set; }
     
         public virtual OS OS { get; set; }

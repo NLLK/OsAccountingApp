@@ -33,7 +33,7 @@ namespace OsAccountingApp1.Models
         [DisplayName("Норма износа")]
         public double wearrate { get; set; }
         [DisplayName("Дата начала обслуживания")]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+               [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public System.DateTime service_start { get; set; }
         [DisplayName("Время обслуживания")]
         public int service_time { get; set; }
