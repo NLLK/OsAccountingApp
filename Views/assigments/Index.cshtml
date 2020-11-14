@@ -35,9 +35,9 @@
             @Html.DisplayFor(modelItem => item.unit.unitname)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id_assignment }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id_assignment }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id_assignment })
+            @Html.ActionLink("Изменить", "Edit", new { id=item.id_assignment }) |
+            @Html.ActionLink("Подробнее", "Details", new { id=item.id_assignment }) |
+            @Html.ActionLink("Удалить", "Delete", new { id=item.id_assignment })
         </td>
     </tr>
 }

@@ -11,12 +11,19 @@ namespace OsAccountingApp1.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+
     public partial class assigment
     {
+        [DisplayName("Код назначения")]
         public int id_assignment { get; set; }
+        [DisplayName("Код сотрудника")]
         public int id_mol { get; set; }
+        [DisplayName("Код отдела")]
         public int id_unit { get; set; }
+        [DisplayName("Дата назначения")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public System.DateTime arrivaldateunit { get; set; }
     
         public virtual MOL MOL { get; set; }

@@ -1,10 +1,8 @@
 ﻿@model OsAccountingApp1.Models.assigment
 
-@{
-    ViewBag.Title = "Edit";
-}
+@{    ViewBag.Title = "Редактирование";}
 
-<h2>Edit</h2>
+<h2>Редактирование</h2>
 
 
 @using (Html.BeginForm())
@@ -12,7 +10,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>assigment</h4>
+        <h4>Назначение</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.id_assignment)
@@ -43,14 +41,14 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Сохранить" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Вернуться к таблице", "Index")
 </div>
 
 @section Scripts {

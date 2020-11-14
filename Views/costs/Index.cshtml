@@ -35,9 +35,9 @@
             @Html.DisplayFor(modelItem => item.OS.os_name)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id_cost }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id_cost }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id_cost })
+            @Html.ActionLink("Изменить", "Edit", new { id=item.id_cost }) |
+            @Html.ActionLink("Подробнее", "Details", new { id=item.id_cost }) |
+            @Html.ActionLink("Удалить", "Delete", new { id=item.id_cost })
         </td>
     </tr>
 }
