@@ -18,7 +18,7 @@ namespace OsAccountingApp1.Controllers
         public ActionResult Index()
         {
             var cost = db.cost.Include(c => c.OS);
-            return View(cost.ToList());
+            return View(cost.OrderBy(c => c.costchangedate).ToList());
         }
 
         // GET: costs/Details/5
@@ -39,7 +39,16 @@ namespace OsAccountingApp1.Controllers
         // GET: costs/Create
         public ActionResult Create()
         {
-            ViewBag.id_os = new SelectList(db.OS, "id_os", "os_name");
+            SelectList s = new SelectList(db.OS, "id_os", "os_name");
+
+            List<SelectListItem> sl = s.ToList();
+
+            List<OS> sd = db.OS.ToList();//класс
+            for (int i = 0; i < sl.Count; i++)
+            {
+                sl[i].Text = sd[i].id_os.ToString() + ", " + sd[i].os_name.ToString();//поля
+            }
+            ViewBag.id_os = sl;
             return View();
         }
 
@@ -73,7 +82,18 @@ namespace OsAccountingApp1.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.id_os = new SelectList(db.OS, "id_os", "os_name", cost.id_os);
+
+            SelectList s = new SelectList(db.OS, "id_os", "os_name", cost.id_os);
+
+            List<SelectListItem> sl = s.ToList();
+
+            List<OS> sd = db.OS.ToList();//класс
+            for (int i = 0; i < sl.Count; i++)
+            {
+                sl[i].Text = sd[i].id_os.ToString() + ", " + sd[i].os_name.ToString();//поля
+            }
+            ViewBag.id_os = sl;
+
             return View(cost);
         }
 
