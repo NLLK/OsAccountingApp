@@ -1,0 +1,45 @@
+﻿@model IEnumerable<OsAccountingApp1.Models.assigment>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.arrivaldateunit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MOL.molname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.unit.unitname)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.arrivaldateunit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MOL.molname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.unit.unitname)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_assignment }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_assignment }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_assignment })
+        </td>
+    </tr>
+}
+
+</table>

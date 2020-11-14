@@ -1,0 +1,516 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище osaccountingModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="assigment">
+          <Key>
+            <PropertyRef Name="id_assignment" />
+          </Key>
+          <Property Name="id_assignment" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_mol" Type="int" Nullable="false" />
+          <Property Name="id_unit" Type="int" Nullable="false" />
+          <Property Name="arrivaldateunit" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cost">
+          <Key>
+            <PropertyRef Name="id_cost" />
+          </Key>
+          <Property Name="id_cost" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_os" Type="int" Nullable="false" />
+          <Property Name="cost" Type="int" Nullable="false" />
+          <Property Name="costchangedate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="group">
+          <Key>
+            <PropertyRef Name="id_class" />
+          </Key>
+          <Property Name="id_class" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="classname" Type="text" Nullable="false" />
+          <Property Name="code" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MOL">
+          <Key>
+            <PropertyRef Name="id_mol" />
+          </Key>
+          <Property Name="id_mol" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="molname" Type="text" Nullable="false" />
+          <Property Name="birthday" Type="date" Nullable="false" />
+          <Property Name="arivaldate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OS">
+          <Key>
+            <PropertyRef Name="id_os" />
+          </Key>
+          <Property Name="id_os" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_class" Type="int" Nullable="false" />
+          <Property Name="os_name" Type="text" Nullable="false" />
+          <Property Name="invertory_number" Type="text" Nullable="false" />
+          <Property Name="wearrate" Type="float" Nullable="false" />
+          <Property Name="service_start" Type="date" Nullable="false" />
+          <Property Name="service_time" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pin">
+          <Key>
+            <PropertyRef Name="id_pin" />
+          </Key>
+          <Property Name="id_pin" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_mol" Type="int" Nullable="false" />
+          <Property Name="id_os" Type="int" Nullable="false" />
+          <Property Name="date" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="unit">
+          <Key>
+            <PropertyRef Name="id_unit" />
+          </Key>
+          <Property Name="id_unit" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="unitname" Type="text" Nullable="false" />
+          <Property Name="adress" Type="text" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_assigment_MOL">
+          <End Role="MOL" Type="Self.MOL" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="assigment" Type="Self.assigment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MOL">
+              <PropertyRef Name="id_mol" />
+            </Principal>
+            <Dependent Role="assigment">
+              <PropertyRef Name="id_mol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_assigment_Unit">
+          <End Role="unit" Type="Self.unit" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="assigment" Type="Self.assigment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="unit">
+              <PropertyRef Name="id_unit" />
+            </Principal>
+            <Dependent Role="assigment">
+              <PropertyRef Name="id_unit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cost_OS">
+          <End Role="OS" Type="Self.OS" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="cost" Type="Self.cost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OS">
+              <PropertyRef Name="id_os" />
+            </Principal>
+            <Dependent Role="cost">
+              <PropertyRef Name="id_os" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OS_class">
+          <End Role="group" Type="Self.group" Multiplicity="1" />
+          <End Role="OS" Type="Self.OS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="group">
+              <PropertyRef Name="id_class" />
+            </Principal>
+            <Dependent Role="OS">
+              <PropertyRef Name="id_class" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pin_MOL">
+          <End Role="MOL" Type="Self.MOL" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="pin" Type="Self.pin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MOL">
+              <PropertyRef Name="id_mol" />
+            </Principal>
+            <Dependent Role="pin">
+              <PropertyRef Name="id_mol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pin_OS">
+          <End Role="OS" Type="Self.OS" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="pin" Type="Self.pin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OS">
+              <PropertyRef Name="id_os" />
+            </Principal>
+            <Dependent Role="pin">
+              <PropertyRef Name="id_os" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище osaccountingModelContainer">
+          <EntitySet Name="assigment" EntityType="Self.assigment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cost" EntityType="Self.cost" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="group" EntityType="Self.group" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MOL" EntityType="Self.MOL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OS" EntityType="Self.OS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pin" EntityType="Self.pin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="unit" EntityType="Self.unit" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_assigment_MOL" Association="Self.FK_assigment_MOL">
+            <End Role="MOL" EntitySet="MOL" />
+            <End Role="assigment" EntitySet="assigment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_assigment_Unit" Association="Self.FK_assigment_Unit">
+            <End Role="unit" EntitySet="unit" />
+            <End Role="assigment" EntitySet="assigment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cost_OS" Association="Self.FK_cost_OS">
+            <End Role="OS" EntitySet="OS" />
+            <End Role="cost" EntitySet="cost" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OS_class" Association="Self.FK_OS_class">
+            <End Role="group" EntitySet="group" />
+            <End Role="OS" EntitySet="OS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pin_MOL" Association="Self.FK_pin_MOL">
+            <End Role="MOL" EntitySet="MOL" />
+            <End Role="pin" EntitySet="pin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pin_OS" Association="Self.FK_pin_OS">
+            <End Role="OS" EntitySet="OS" />
+            <End Role="pin" EntitySet="pin" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="osaccountingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="assigment">
+          <Key>
+            <PropertyRef Name="id_assignment" />
+          </Key>
+          <Property Name="id_assignment" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_mol" Type="Int32" Nullable="false" />
+          <Property Name="id_unit" Type="Int32" Nullable="false" />
+          <Property Name="arrivaldateunit" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="MOL" Relationship="Self.FK_assigment_MOL" FromRole="assigment" ToRole="MOL" />
+          <NavigationProperty Name="unit" Relationship="Self.FK_assigment_Unit" FromRole="assigment" ToRole="unit" />
+        </EntityType>
+        <EntityType Name="cost">
+          <Key>
+            <PropertyRef Name="id_cost" />
+          </Key>
+          <Property Name="id_cost" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_os" Type="Int32" Nullable="false" />
+          <Property Name="cost1" Type="Int32" Nullable="false" />
+          <Property Name="costchangedate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="OS" Relationship="Self.FK_cost_OS" FromRole="cost" ToRole="OS" />
+        </EntityType>
+        <EntityType Name="group">
+          <Key>
+            <PropertyRef Name="id_class" />
+          </Key>
+          <Property Name="id_class" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="classname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="code" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="OS" Relationship="Self.FK_OS_class" FromRole="group" ToRole="OS" />
+        </EntityType>
+        <EntityType Name="MOL">
+          <Key>
+            <PropertyRef Name="id_mol" />
+          </Key>
+          <Property Name="id_mol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="molname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="birthday" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="arivaldate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="assigment" Relationship="Self.FK_assigment_MOL" FromRole="MOL" ToRole="assigment" />
+          <NavigationProperty Name="pin" Relationship="Self.FK_pin_MOL" FromRole="MOL" ToRole="pin" />
+        </EntityType>
+        <EntityType Name="OS">
+          <Key>
+            <PropertyRef Name="id_os" />
+          </Key>
+          <Property Name="id_os" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_class" Type="Int32" Nullable="false" />
+          <Property Name="os_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="invertory_number" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="wearrate" Type="Double" Nullable="false" />
+          <Property Name="service_start" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="service_time" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="cost" Relationship="Self.FK_cost_OS" FromRole="OS" ToRole="cost" />
+          <NavigationProperty Name="group" Relationship="Self.FK_OS_class" FromRole="OS" ToRole="group" />
+          <NavigationProperty Name="pin" Relationship="Self.FK_pin_OS" FromRole="OS" ToRole="pin" />
+        </EntityType>
+        <EntityType Name="pin">
+          <Key>
+            <PropertyRef Name="id_pin" />
+          </Key>
+          <Property Name="id_pin" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_mol" Type="Int32" Nullable="false" />
+          <Property Name="id_os" Type="Int32" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="MOL" Relationship="Self.FK_pin_MOL" FromRole="pin" ToRole="MOL" />
+          <NavigationProperty Name="OS" Relationship="Self.FK_pin_OS" FromRole="pin" ToRole="OS" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="unit">
+          <Key>
+            <PropertyRef Name="id_unit" />
+          </Key>
+          <Property Name="id_unit" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="unitname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="adress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="assigment" Relationship="Self.FK_assigment_Unit" FromRole="unit" ToRole="assigment" />
+        </EntityType>
+        <Association Name="FK_assigment_MOL">
+          <End Role="MOL" Type="Self.MOL" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="assigment" Type="Self.assigment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MOL">
+              <PropertyRef Name="id_mol" />
+            </Principal>
+            <Dependent Role="assigment">
+              <PropertyRef Name="id_mol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_assigment_Unit">
+          <End Role="unit" Type="Self.unit" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="assigment" Type="Self.assigment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="unit">
+              <PropertyRef Name="id_unit" />
+            </Principal>
+            <Dependent Role="assigment">
+              <PropertyRef Name="id_unit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cost_OS">
+          <End Role="OS" Type="Self.OS" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="cost" Type="Self.cost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OS">
+              <PropertyRef Name="id_os" />
+            </Principal>
+            <Dependent Role="cost">
+              <PropertyRef Name="id_os" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OS_class">
+          <End Role="group" Type="Self.group" Multiplicity="1" />
+          <End Role="OS" Type="Self.OS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="group">
+              <PropertyRef Name="id_class" />
+            </Principal>
+            <Dependent Role="OS">
+              <PropertyRef Name="id_class" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pin_MOL">
+          <End Role="MOL" Type="Self.MOL" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="pin" Type="Self.pin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MOL">
+              <PropertyRef Name="id_mol" />
+            </Principal>
+            <Dependent Role="pin">
+              <PropertyRef Name="id_mol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pin_OS">
+          <End Role="OS" Type="Self.OS" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="pin" Type="Self.pin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OS">
+              <PropertyRef Name="id_os" />
+            </Principal>
+            <Dependent Role="pin">
+              <PropertyRef Name="id_os" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="osaccountingEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="assigment" EntityType="Self.assigment" />
+          <EntitySet Name="cost" EntityType="Self.cost" />
+          <EntitySet Name="group" EntityType="Self.group" />
+          <EntitySet Name="MOL" EntityType="Self.MOL" />
+          <EntitySet Name="OS" EntityType="Self.OS" />
+          <EntitySet Name="pin" EntityType="Self.pin" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="unit" EntityType="Self.unit" />
+          <AssociationSet Name="FK_assigment_MOL" Association="Self.FK_assigment_MOL">
+            <End Role="MOL" EntitySet="MOL" />
+            <End Role="assigment" EntitySet="assigment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_assigment_Unit" Association="Self.FK_assigment_Unit">
+            <End Role="unit" EntitySet="unit" />
+            <End Role="assigment" EntitySet="assigment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cost_OS" Association="Self.FK_cost_OS">
+            <End Role="OS" EntitySet="OS" />
+            <End Role="cost" EntitySet="cost" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OS_class" Association="Self.FK_OS_class">
+            <End Role="group" EntitySet="group" />
+            <End Role="OS" EntitySet="OS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pin_MOL" Association="Self.FK_pin_MOL">
+            <End Role="MOL" EntitySet="MOL" />
+            <End Role="pin" EntitySet="pin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pin_OS" Association="Self.FK_pin_OS">
+            <End Role="OS" EntitySet="OS" />
+            <End Role="pin" EntitySet="pin" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище osaccountingModelContainer" CdmEntityContainer="osaccountingEntities">
+          <EntitySetMapping Name="assigment">
+            <EntityTypeMapping TypeName="osaccountingModel.assigment">
+              <MappingFragment StoreEntitySet="assigment">
+                <ScalarProperty Name="id_assignment" ColumnName="id_assignment" />
+                <ScalarProperty Name="id_mol" ColumnName="id_mol" />
+                <ScalarProperty Name="id_unit" ColumnName="id_unit" />
+                <ScalarProperty Name="arrivaldateunit" ColumnName="arrivaldateunit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cost">
+            <EntityTypeMapping TypeName="osaccountingModel.cost">
+              <MappingFragment StoreEntitySet="cost">
+                <ScalarProperty Name="id_cost" ColumnName="id_cost" />
+                <ScalarProperty Name="id_os" ColumnName="id_os" />
+                <ScalarProperty Name="cost1" ColumnName="cost" />
+                <ScalarProperty Name="costchangedate" ColumnName="costchangedate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="group">
+            <EntityTypeMapping TypeName="osaccountingModel.group">
+              <MappingFragment StoreEntitySet="group">
+                <ScalarProperty Name="id_class" ColumnName="id_class" />
+                <ScalarProperty Name="classname" ColumnName="classname" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MOL">
+            <EntityTypeMapping TypeName="osaccountingModel.MOL">
+              <MappingFragment StoreEntitySet="MOL">
+                <ScalarProperty Name="id_mol" ColumnName="id_mol" />
+                <ScalarProperty Name="molname" ColumnName="molname" />
+                <ScalarProperty Name="birthday" ColumnName="birthday" />
+                <ScalarProperty Name="arivaldate" ColumnName="arivaldate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OS">
+            <EntityTypeMapping TypeName="osaccountingModel.OS">
+              <MappingFragment StoreEntitySet="OS">
+                <ScalarProperty Name="id_os" ColumnName="id_os" />
+                <ScalarProperty Name="id_class" ColumnName="id_class" />
+                <ScalarProperty Name="os_name" ColumnName="os_name" />
+                <ScalarProperty Name="invertory_number" ColumnName="invertory_number" />
+                <ScalarProperty Name="wearrate" ColumnName="wearrate" />
+                <ScalarProperty Name="service_start" ColumnName="service_start" />
+                <ScalarProperty Name="service_time" ColumnName="service_time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pin">
+            <EntityTypeMapping TypeName="osaccountingModel.pin">
+              <MappingFragment StoreEntitySet="pin">
+                <ScalarProperty Name="id_pin" ColumnName="id_pin" />
+                <ScalarProperty Name="id_mol" ColumnName="id_mol" />
+                <ScalarProperty Name="id_os" ColumnName="id_os" />
+                <ScalarProperty Name="date" ColumnName="date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="osaccountingModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="unit">
+            <EntityTypeMapping TypeName="osaccountingModel.unit">
+              <MappingFragment StoreEntitySet="unit">
+                <ScalarProperty Name="id_unit" ColumnName="id_unit" />
+                <ScalarProperty Name="unitname" ColumnName="unitname" />
+                <ScalarProperty Name="adress" ColumnName="adress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,42 @@
+﻿@model OsAccountingApp1.Models.MOL
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>MOL</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.molname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.molname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.birthday)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.birthday)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.arivaldate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.arivaldate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_mol }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

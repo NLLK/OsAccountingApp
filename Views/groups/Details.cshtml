@@ -1,0 +1,34 @@
+﻿@model OsAccountingApp1.Models.group
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>group</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.classname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.classname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.code)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_class }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

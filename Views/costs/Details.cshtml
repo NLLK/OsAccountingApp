@@ -1,0 +1,42 @@
+﻿@model OsAccountingApp1.Models.cost
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>cost</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.cost1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cost1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.costchangedate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.costchangedate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OS.os_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OS.os_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_cost }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

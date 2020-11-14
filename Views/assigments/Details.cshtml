@@ -1,0 +1,42 @@
+﻿@model OsAccountingApp1.Models.assigment
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>assigment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.arrivaldateunit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.arrivaldateunit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MOL.molname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MOL.molname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.unit.unitname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.unit.unitname)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_assignment }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

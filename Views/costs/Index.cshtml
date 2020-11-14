@@ -1,0 +1,45 @@
+﻿@model IEnumerable<OsAccountingApp1.Models.cost>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.cost1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.costchangedate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OS.os_name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.cost1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.costchangedate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OS.os_name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_cost }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_cost }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_cost })
+        </td>
+    </tr>
+}
+
+</table>
