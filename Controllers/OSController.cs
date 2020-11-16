@@ -10,6 +10,7 @@ using OsAccountingApp1.Models;
 
 namespace OsAccountingApp1.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class OSController : Controller
     {
         private osaccountingEntities db = new osaccountingEntities();

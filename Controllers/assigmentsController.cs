@@ -10,8 +10,10 @@ using OsAccountingApp1.Models;
 
 namespace OsAccountingApp1.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class assigmentsController : Controller
     {
+
         private osaccountingEntities db = new osaccountingEntities();
 
         // GET: assigments
