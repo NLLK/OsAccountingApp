@@ -1,13 +1,13 @@
 ﻿@model OsAccountingApp1.Models.assigment
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Подробнее";
 }
 
-<h2>Details</h2>
+<h2>@ViewBag.Title</h2>
 
 <div>
-    <h4>assigment</h4>
+    <h4>Прикрепление</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -19,19 +19,19 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.MOL.molname)
+            @Html.DisplayNameFor(model => model.MOL.id_mol)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.MOL.molname)
+            @Html.DisplayFor(model => model.MOL.id_mol)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.unit.unitname)
+            @Html.DisplayNameFor(model => model.unit.id_unit)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.unit.unitname)
+            @Html.DisplayFor(model => model.unit.id_unit)
         </dd>
 
     </dl>

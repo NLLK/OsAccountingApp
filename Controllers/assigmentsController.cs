@@ -17,7 +17,7 @@ namespace OsAccountingApp1.Controllers
         // GET: assigments
         public ActionResult Index()
         {
-            var assigment = db.assigment.Include(a => a.MOL).Include(a => a.unit);
+            var assigment = db.assigment.Include(a => a.MOL).Include(a => a.unit).OrderBy(a => a.arrivaldateunit);
             return View(assigment.ToList());
         }
 
@@ -39,8 +39,28 @@ namespace OsAccountingApp1.Controllers
         // GET: assigments/Create
         public ActionResult Create()
         {
-            ViewBag.id_mol = new SelectList(db.MOL, "id_mol", "molname");
-            ViewBag.id_unit = new SelectList(db.unit, "id_unit", "unitname");
+            SelectList s = new SelectList(db.MOL, "id_mol", "molname");
+
+            List<SelectListItem> sl = s.ToList();
+
+            List<MOL> sd = db.MOL.ToList();//класс
+            for (int i = 0; i < sl.Count; i++)
+            {
+                sl[i].Text = sd[i].id_mol.ToString() + ", " + sd[i].molname.ToString();//поля
+            }
+            ViewBag.id_mol = sl;
+
+            SelectList ss = new SelectList(db.unit, "id_unit", "unitname");
+
+            List<SelectListItem> ssl = ss.ToList();
+
+            List<unit> ssd = db.unit.ToList();//класс
+            for (int i = 0; i < ssl.Count; i++)
+            {
+                ssl[i].Text = ssd[i].id_unit.ToString() + ", " + ssd[i].unitname.ToString();//поля
+            }
+            ViewBag.id_unit = ssl;
+
             return View();
         }
 
@@ -75,8 +95,27 @@ namespace OsAccountingApp1.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.id_mol = new SelectList(db.MOL, "id_mol", "molname", assigment.id_mol);
-            ViewBag.id_unit = new SelectList(db.unit, "id_unit", "unitname", assigment.id_unit);
+            SelectList s = new SelectList(db.MOL, "id_mol", "molname");
+
+            List<SelectListItem> sl = s.ToList();
+
+            List<MOL> sd = db.MOL.ToList();//класс
+            for (int i = 0; i < sl.Count; i++)
+            {
+                sl[i].Text = sd[i].id_mol.ToString() + ", " + sd[i].molname.ToString();//поля
+            }
+            ViewBag.id_mol = sl;
+
+            SelectList ss = new SelectList(db.unit, "id_unit", "unitname");
+
+            List<SelectListItem> ssl = ss.ToList();
+
+            List<unit> ssd = db.unit.ToList();//класс
+            for (int i = 0; i < ssl.Count; i++)
+            {
+                ssl[i].Text = ssd[i].id_unit.ToString() + ", " + ssd[i].unitname.ToString();//поля
+            }
+            ViewBag.id_unit = ssl;
             return View(assigment);
         }
 

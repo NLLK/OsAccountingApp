@@ -17,7 +17,7 @@ namespace OsAccountingApp1.Controllers
         // GET: MOLs
         public ActionResult Index()
         {
-            return View(db.MOL.ToList());
+            return View(db.MOL.ToList().OrderBy(MOL => MOL.molname));
         }
 
         // GET: MOLs/Details/5

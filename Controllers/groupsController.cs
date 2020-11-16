@@ -17,7 +17,7 @@ namespace OsAccountingApp1.Controllers
         // GET: groups
         public ActionResult Index()
         {
-            return View(db.group.ToList());
+            return View(db.group.ToList().OrderBy(group => group.code));
         }
 
         // GET: groups/Details/5

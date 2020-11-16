@@ -12,13 +12,13 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>pin</h4>
+        <h4>Прикрепление</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.id_pin)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.id_mol, "id_mol", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.id_mol, "МОЛ", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("id_mol", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.id_mol, "", new { @class = "text-danger" })
@@ -26,7 +26,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.id_os, "id_os", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.id_os, "ОС", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("id_os", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.id_os, "", new { @class = "text-danger" })

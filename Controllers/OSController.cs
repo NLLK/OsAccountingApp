@@ -18,7 +18,7 @@ namespace OsAccountingApp1.Controllers
         public ActionResult Index()
         {
             var oS = db.OS.Include(o => o.group);
-            return View(oS.ToList());
+            return View(oS.ToList().OrderBy(o => o.service_start));
         }
 
         // GET: OS/Details/5
@@ -39,7 +39,16 @@ namespace OsAccountingApp1.Controllers
         // GET: OS/Create
         public ActionResult Create()
         {
-            ViewBag.id_class = new SelectList(db.group, "id_class", "classname");
+            SelectList s = new SelectList(db.group, "id_class", "classname");
+
+            List<SelectListItem> sl = s.ToList();
+
+            List<group> sd = db.group.ToList();//класс
+            for (int i = 0; i < sl.Count; i++)
+            {
+                sl[i].Text = sd[i].id_class.ToString() + ", " + sd[i].classname.ToString();//поля
+            }
+            ViewBag.id_class = sl;
             return View();
         }
 
@@ -73,7 +82,16 @@ namespace OsAccountingApp1.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.id_class = new SelectList(db.group, "id_class", "classname", oS.id_class);
+            SelectList s = new SelectList(db.group, "id_class", "classname");
+
+            List<SelectListItem> sl = s.ToList();
+
+            List<group> sd = db.group.ToList();//класс
+            for (int i = 0; i < sl.Count; i++)
+            {
+                sl[i].Text = sd[i].id_class.ToString() + ", " + sd[i].classname.ToString();//поля
+            }
+            ViewBag.id_class = sl;
             return View(oS);
         }
 
