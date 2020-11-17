@@ -10,7 +10,7 @@ using OsAccountingApp1.Models;
 
 namespace OsAccountingApp1.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize]
     public class OSController : Controller
     {
         private osaccountingEntities db = new osaccountingEntities();
@@ -36,7 +36,7 @@ namespace OsAccountingApp1.Controllers
             }
             return View(oS);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: OS/Create
         public ActionResult Create()
         {
@@ -112,7 +112,7 @@ namespace OsAccountingApp1.Controllers
             ViewBag.id_class = new SelectList(db.group, "id_class", "classname", oS.id_class);
             return View(oS);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: OS/Delete/5
         public ActionResult Delete(int? id)
         {

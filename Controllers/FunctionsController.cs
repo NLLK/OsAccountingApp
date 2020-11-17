@@ -6,20 +6,17 @@ using System.Web.Mvc;
 
 namespace OsAccountingApp1.Controllers
 {
-    [Authorize]
-    public class HomeController : Controller
+    public class FunctionsController : Controller
     {
+        // GET: Functions
         public ActionResult Index()
         {
             return View();
         }
-        public ActionResult Functions()
-        { 
-            return View();
-        }
-        public ActionResult Tables()
+        public ActionResult AddMOL()
         {
-            return View();
+            TempData["HomePage"] = "/Functions";
+            return RedirectToAction("Create", "MOls");
         }
     }
 }

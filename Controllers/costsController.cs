@@ -10,7 +10,7 @@ using OsAccountingApp1.Models;
 
 namespace OsAccountingApp1.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize]
     public class costsController : Controller
     {
         private osaccountingEntities db = new osaccountingEntities();
@@ -36,7 +36,7 @@ namespace OsAccountingApp1.Controllers
             }
             return View(cost);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: costs/Create
         public ActionResult Create()
         {
@@ -114,7 +114,7 @@ namespace OsAccountingApp1.Controllers
             ViewBag.id_os = new SelectList(db.OS, "id_os", "os_name", cost.id_os);
             return View(cost);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: costs/Delete/5
         public ActionResult Delete(int? id)
         {

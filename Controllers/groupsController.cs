@@ -10,7 +10,7 @@ using OsAccountingApp1.Models;
 
 namespace OsAccountingApp1.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize]
     public class groupsController : Controller
     {
         private osaccountingEntities db = new osaccountingEntities();
@@ -35,7 +35,7 @@ namespace OsAccountingApp1.Controllers
             }
             return View(group);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: groups/Create
         public ActionResult Create()
         {
@@ -89,7 +89,7 @@ namespace OsAccountingApp1.Controllers
             }
             return View(group);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: groups/Delete/5
         public ActionResult Delete(int? id)
         {

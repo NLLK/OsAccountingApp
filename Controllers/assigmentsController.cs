@@ -10,19 +10,20 @@ using OsAccountingApp1.Models;
 
 namespace OsAccountingApp1.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize]
     public class assigmentsController : Controller
     {
 
         private osaccountingEntities db = new osaccountingEntities();
 
+        
         // GET: assigments
         public ActionResult Index()
         {
             var assigment = db.assigment.Include(a => a.MOL).Include(a => a.unit).OrderBy(a => a.arrivaldateunit);
             return View(assigment.ToList());
         }
-
+        [Authorize]
         // GET: assigments/Details/5
         public ActionResult Details(int? id)
         {
@@ -37,7 +38,7 @@ namespace OsAccountingApp1.Controllers
             }
             return View(assigment);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: assigments/Create
         public ActionResult Create()
         {
@@ -84,7 +85,7 @@ namespace OsAccountingApp1.Controllers
             ViewBag.id_unit = new SelectList(db.unit, "id_unit", "unitname", assigment.id_unit);
             return View(assigment);
         }
-
+        [Authorize]
         // GET: assigments/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -138,7 +139,7 @@ namespace OsAccountingApp1.Controllers
             ViewBag.id_unit = new SelectList(db.unit, "id_unit", "unitname", assigment.id_unit);
             return View(assigment);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: assigments/Delete/5
         public ActionResult Delete(int? id)
         {

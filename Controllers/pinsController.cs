@@ -10,7 +10,7 @@ using OsAccountingApp1.Models;
 
 namespace OsAccountingApp1.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize]
     public class pinsController : Controller
     {
         private osaccountingEntities db = new osaccountingEntities();
@@ -36,7 +36,7 @@ namespace OsAccountingApp1.Controllers
             }
             return View(pin);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: pins/Create
         public ActionResult Create()
         {
@@ -136,7 +136,7 @@ namespace OsAccountingApp1.Controllers
             ViewBag.id_os = new SelectList(db.OS, "id_os", "os_name", pin.id_os);
             return View(pin);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: pins/Delete/5
         public ActionResult Delete(int? id)
         {

@@ -1,16 +1,16 @@
 ﻿@model OsAccountingApp1.Models.MOL
 
 @{
-           ViewBag.Title = "Добавить";
+    ViewBag.Title = "Добавить";
 }
 
 <h2>Добавить</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Материально ответственное лицо</h4>
         <hr />
@@ -48,7 +48,11 @@
 }
 
 <div>
-    @Html.ActionLink("Вернуться к таблице", "Index")
+    @{
+        if (ViewBag.HomePage == "/Functions") { @Html.ActionLink("Вернуться к функциям", "Functions", "Home"); TempData["HomePage"] = "/Functions";
+        }
+        else { @Html.ActionLink("Вернуться к таблице", "Index"); TempData["HomePage"] = "/Index"; }
+    }
 </div>
 
 @section Scripts {

@@ -10,7 +10,7 @@ using OsAccountingApp1.Models;
 
 namespace OsAccountingApp1.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize]
     public class MOLsController : Controller
     {
         private osaccountingEntities db = new osaccountingEntities();
@@ -18,6 +18,7 @@ namespace OsAccountingApp1.Controllers
         // GET: MOLs
         public ActionResult Index()
         {
+            TempData["HomePage"] = "Index";
             return View(db.MOL.ToList().OrderBy(MOL => MOL.molname));
         }
 
@@ -35,10 +36,11 @@ namespace OsAccountingApp1.Controllers
             }
             return View(mOL);
         }
-
+        [Authorize]
         // GET: MOLs/Create
         public ActionResult Create()
         {
+            if (TempData["HomePage"].Equals("/Functions"))            ViewBag.HomePage = TempData["HomePage"];
             return View();
         }
 
@@ -53,6 +55,10 @@ namespace OsAccountingApp1.Controllers
             {
                 db.MOL.Add(mOL);
                 db.SaveChanges();
+
+                if (TempData["HomePage"].Equals("/Functions"))
+                { 
+                    return RedirectToAction("Functions", "Home"); }
                 return RedirectToAction("Index");
             }
 
@@ -89,7 +95,7 @@ namespace OsAccountingApp1.Controllers
             }
             return View(mOL);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: MOLs/Delete/5
         public ActionResult Delete(int? id)
         {
