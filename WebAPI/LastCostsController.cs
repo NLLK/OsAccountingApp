@@ -33,13 +33,13 @@ namespace OsAccountingApp1.WebAPI
                 lcint = lclist[count - 1].cost1;
                 lc = lcint.ToString();
             }
-            string json = JsonConvert.SerializeObject(new request { wearrate = wr, lastCost = lc, recCost = (1-wr) *lcint });
+            string json = JsonConvert.SerializeObject(new requestLastCost { wearrate = wr, lastCost = lc, recCost = (1-wr) *lcint });
             return json;
 
         }
     }
     [Serializable]
-    public class request
+    public class requestLastCost
     {
         public double wearrate { get; set; }
         public string lastCost { get; set; }

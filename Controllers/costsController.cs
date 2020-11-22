@@ -125,7 +125,16 @@ namespace OsAccountingApp1.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.id_os = new SelectList(db.OS, "id_os", "os_name", cost.id_os);
+            SelectList s = new SelectList(db.OS, "id_os", "os_name", cost.id_os);
+
+            List<SelectListItem> sl = s.ToList();
+
+            List<OS> sd = db.OS.ToList();//класс
+            for (int i = 0; i < sl.Count; i++)
+            {
+                sl[i].Text = sd[i].id_os.ToString() + ", " + sd[i].os_name.ToString();//поля
+            }
+            ViewBag.id_os = sl;
             return View(cost);
         }
         [Authorize(Roles = "Admin")]

@@ -240,6 +240,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="WebAPI\cardOSController.cs" />
     <Compile Include="WebAPI\LastCostsController.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -406,10 +407,10 @@
     <Content Include="Views\assigments\Index.cshtml" />
     <Content Include="Views\Home\Functions.cshtml" />
     <Content Include="Views\Home\Tables.cshtml" />
+    <Content Include="Views\Functions\OScard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Functions\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

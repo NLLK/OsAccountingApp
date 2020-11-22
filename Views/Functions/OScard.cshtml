@@ -1,0 +1,77 @@
+﻿@model OsAccountingApp1.Models.OS
+
+@{
+    ViewBag.Title = "Карточка ОС";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="row">
+    @Html.LabelFor(model => model.id_os, "ОС", htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.DropDownList("id_os", null, htmlAttributes: new { @class = "form-control", @onclick = "getOsCard(this.value)" })
+        @Html.ValidationMessageFor(model => model.id_os, "", new { @class = "text-danger" })
+    </div>
+</div>
+<div class="row">
+    @Html.LabelFor(model => model.os_name, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-4">
+        <p class="form-control" id="os_name"></p>
+    </div>
+</div>
+<div class="row">
+    @Html.LabelFor(model => model.id_class, "Класс", htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-4">
+        <p class="form-control" id="class"></p>
+    </div>
+</div>
+<div class="row">
+    @Html.LabelFor(model => model.invertory_number, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-4">
+        <p class="form-control" id="invertory_number"></p>
+    </div>
+</div>
+<div class="row">
+    @Html.LabelFor(model => model.wearrate, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-4">
+        <p class="form-control" id="wearrate"></p>
+    </div>
+</div>
+<div class="row">
+    @Html.LabelFor(model => model.service_start, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-4">
+        <p class="form-control" id="service_start"></p>
+    </div>
+</div>
+<div class="row">
+    @Html.LabelFor(model => model.service_time, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-4">
+        <p class="form-control" id="service_time"></p>
+    </div>
+</div>
+<div class="row">
+    <label class="control-label col-md-2" for="unit">Последняя цена</label>
+    <div class="col-md-4">
+        <p class="form-control" id="lastcost"></p>
+    </div>
+</div>
+<div class="row">
+    <label class="control-label col-md-2" for="unit">Отдел</label>
+    <div class="col-md-4">
+        <p class="form-control" id="unit"></p>
+    </div>
+</div>
+<div class="row">
+    <label class="control-label col-md-2" for="unit_date">Дата прикрепления МОЛ</label>
+    <div class="col-md-4">
+        <p class="form-control" id="pin_date"></p>
+    </div>
+</div>
+<div class="row">
+    <label class="control-label col-md-2" for="molname">МОЛ</label>
+    <div class="col-md-4">
+        <p class="form-control" id="molname"></p>
+    </div>
+</div>
+
+
