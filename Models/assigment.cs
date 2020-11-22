@@ -12,7 +12,7 @@ namespace OsAccountingApp1.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations;
 
     public partial class assigment
     {
@@ -23,9 +23,9 @@ using System.ComponentModel.DataAnnotations;
         [DisplayName("Код отдела")]
         public int id_unit { get; set; }
         [DisplayName("Дата назначения")]
-               [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public System.DateTime arrivaldateunit { get; set; }
-    
+
         public virtual MOL MOL { get; set; }
         public virtual unit unit { get; set; }
     }

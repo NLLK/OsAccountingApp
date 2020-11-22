@@ -26,7 +26,7 @@ namespace OsAccountingApp1.Models
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public System.DateTime date { get; set; }
-    
+
         public virtual MOL MOL { get; set; }
         public virtual OS OS { get; set; }
     }

@@ -26,7 +26,7 @@ namespace OsAccountingApp1.Models
         public string classname { get; set; }
         [DisplayName("Кодировка")]
         public string code { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OS> OS { get; set; }
     }

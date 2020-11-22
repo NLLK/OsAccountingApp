@@ -72,7 +72,16 @@ namespace OsAccountingApp1.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.id_class = new SelectList(db.group, "id_class", "classname", oS.id_class);
+            SelectList s = new SelectList(db.group, "id_class", "classname");
+
+            List<SelectListItem> sl = s.ToList();
+
+            List<group> sd = db.group.ToList();//класс
+            for (int i = 0; i < sl.Count; i++)
+            {
+                sl[i].Text = sd[i].id_class.ToString() + ", " + sd[i].classname.ToString();//поля
+            }
+            ViewBag.id_class = sl;
             return View(oS);
         }
 

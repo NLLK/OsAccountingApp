@@ -15,7 +15,8 @@ namespace OsAccountingApp1.WebAPI
         // GET api/lastcosts/5
         public string Get(int id)
         {
-            double wr = db.OS.Find(id).wearrate;
+            string wearrateString = db.OS.Find(id).wearrate.Replace(".", ",");
+            double wr = Convert.ToDouble(wearrateString);
 
             var costs = db.cost.Where(c => c.id_os == id).OrderBy(c => c.costchangedate);
             List<cost> lclist = costs.ToList();

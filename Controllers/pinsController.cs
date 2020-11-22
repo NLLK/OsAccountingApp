@@ -82,9 +82,27 @@ namespace OsAccountingApp1.Controllers
                 }
                 return RedirectToAction("Index");
             }
+            SelectList s = new SelectList(db.MOL, "id_mol", "molname");
 
-            ViewBag.id_mol = new SelectList(db.MOL, "id_mol", "molname", pin.id_mol);
-            ViewBag.id_os = new SelectList(db.OS, "id_os", "os_name", pin.id_os);
+            List<SelectListItem> sl = s.ToList();
+
+            List<MOL> sd = db.MOL.ToList();//класс
+            for (int i = 0; i < sl.Count; i++)
+            {
+                sl[i].Text = sd[i].id_mol.ToString() + ", " + sd[i].molname.ToString();//поля
+            }
+            ViewBag.id_mol = sl;
+
+            SelectList ss = new SelectList(db.OS, "id_os", "os_name");
+
+            List<SelectListItem> ssl = ss.ToList();
+
+            List<OS> ssd = db.OS.ToList();//класс
+            for (int i = 0; i < ssl.Count; i++)
+            {
+                ssl[i].Text = ssd[i].id_os.ToString() + ", " + ssd[i].os_name.ToString();//поля
+            }
+            ViewBag.id_os = ssl;
             return View(pin);
         }
 

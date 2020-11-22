@@ -31,7 +31,6 @@ namespace OsAccountingApp1.Models
         public virtual DbSet<MOL> MOL { get; set; }
         public virtual DbSet<OS> OS { get; set; }
         public virtual DbSet<pin> pin { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<unit> unit { get; set; }
     }
 }

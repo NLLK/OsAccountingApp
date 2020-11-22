@@ -48,7 +48,7 @@
           <Property Name="id_class" Type="int" Nullable="false" />
           <Property Name="os_name" Type="text" Nullable="false" />
           <Property Name="invertory_number" Type="text" Nullable="false" />
-          <Property Name="wearrate" Type="float" Nullable="false" />
+          <Property Name="wearrate" Type="nvarchar" MaxLength="6" Nullable="false" />
           <Property Name="service_start" Type="date" Nullable="false" />
           <Property Name="service_time" Type="int" Nullable="false" />
         </EntityType>
@@ -60,16 +60,6 @@
           <Property Name="id_mol" Type="int" Nullable="false" />
           <Property Name="id_os" Type="int" Nullable="false" />
           <Property Name="date" Type="date" Nullable="false" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="unit">
           <Key>
@@ -168,7 +158,6 @@
           <EntitySet Name="MOL" EntityType="Self.MOL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OS" EntityType="Self.OS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="pin" EntityType="Self.pin" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="unit" EntityType="Self.unit" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_assigment_MOL" Association="Self.FK_assigment_MOL">
             <End Role="MOL" EntitySet="MOL" />
@@ -249,7 +238,7 @@
           <Property Name="id_class" Type="Int32" Nullable="false" />
           <Property Name="os_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="invertory_number" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="wearrate" Type="Double" Nullable="false" />
+          <Property Name="wearrate" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="service_start" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="service_time" Type="Int32" Nullable="false" />
           <NavigationProperty Name="cost" Relationship="Self.FK_cost_OS" FromRole="OS" ToRole="cost" />
@@ -266,16 +255,6 @@
           <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="MOL" Relationship="Self.FK_pin_MOL" FromRole="pin" ToRole="MOL" />
           <NavigationProperty Name="OS" Relationship="Self.FK_pin_OS" FromRole="pin" ToRole="OS" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="unit">
           <Key>
@@ -375,7 +354,6 @@
           <EntitySet Name="MOL" EntityType="Self.MOL" />
           <EntitySet Name="OS" EntityType="Self.OS" />
           <EntitySet Name="pin" EntityType="Self.pin" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="unit" EntityType="Self.unit" />
           <AssociationSet Name="FK_assigment_MOL" Association="Self.FK_assigment_MOL">
             <End Role="MOL" EntitySet="MOL" />
@@ -467,17 +445,6 @@
                 <ScalarProperty Name="id_mol" ColumnName="id_mol" />
                 <ScalarProperty Name="id_os" ColumnName="id_os" />
                 <ScalarProperty Name="date" ColumnName="date" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="osaccountingModel.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
