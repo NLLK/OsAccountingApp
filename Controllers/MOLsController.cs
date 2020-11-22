@@ -40,7 +40,7 @@ namespace OsAccountingApp1.Controllers
         // GET: MOLs/Create
         public ActionResult Create()
         {
-            if (TempData["HomePage"].Equals("/Functions"))            ViewBag.HomePage = TempData["HomePage"];
+            if (TempData["HomePage"].Equals("/Functions")) ViewBag.HomePage = TempData["HomePage"];
             return View();
         }
 

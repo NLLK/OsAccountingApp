@@ -23,7 +23,8 @@ namespace OsAccountingApp1.Models
         [DisplayName("Код ОС")]
         public int id_os { get; set; }
         [DisplayName("Дата прикрепления")]
-               [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public System.DateTime date { get; set; }
     
         public virtual MOL MOL { get; set; }

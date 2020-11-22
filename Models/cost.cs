@@ -20,9 +20,11 @@ namespace OsAccountingApp1.Models
         public int id_cost { get; set; }
         [DisplayName("Код ОС")]
         public int id_os { get; set; }
+        [Range(0.0, 1.0)]
         [DisplayName("Цена")]
         public int cost1 { get; set; }
         [DisplayName("Дата изменения цены")]
+        [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public System.DateTime costchangedate { get; set; }
     

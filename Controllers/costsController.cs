@@ -18,6 +18,7 @@ namespace OsAccountingApp1.Controllers
         // GET: costs
         public ActionResult Index()
         {
+            TempData["HomePage"] = "Index";
             var cost = db.cost.Include(c => c.OS);
             return View(cost.OrderBy(c => c.costchangedate).ToList());
         }
@@ -36,10 +37,10 @@ namespace OsAccountingApp1.Controllers
             }
             return View(cost);
         }
-        [Authorize(Roles = "Admin")]
         // GET: costs/Create
         public ActionResult Create()
         {
+            if (TempData["HomePage"].Equals("/Functions")) ViewBag.HomePage = TempData["HomePage"];
             SelectList s = new SelectList(db.OS, "id_os", "os_name");
 
             List<SelectListItem> sl = s.ToList();
@@ -64,6 +65,10 @@ namespace OsAccountingApp1.Controllers
             {
                 db.cost.Add(cost);
                 db.SaveChanges();
+                if (TempData["HomePage"].Equals("/Functions"))
+                {
+                    return RedirectToAction("Functions", "Home");
+                }
                 return RedirectToAction("Index");
             }
 

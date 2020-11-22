@@ -18,6 +18,7 @@ namespace OsAccountingApp1.Controllers
         // GET: OS
         public ActionResult Index()
         {
+            TempData["HomePage"] = "Index";
             var oS = db.OS.Include(o => o.group);
             return View(oS.ToList().OrderBy(o => o.service_start));
         }
@@ -36,10 +37,10 @@ namespace OsAccountingApp1.Controllers
             }
             return View(oS);
         }
-        [Authorize(Roles = "Admin")]
         // GET: OS/Create
         public ActionResult Create()
         {
+            if (TempData["HomePage"].Equals("/Functions")) ViewBag.HomePage = TempData["HomePage"];
             SelectList s = new SelectList(db.group, "id_class", "classname");
 
             List<SelectListItem> sl = s.ToList();
@@ -64,6 +65,10 @@ namespace OsAccountingApp1.Controllers
             {
                 db.OS.Add(oS);
                 db.SaveChanges();
+                if (TempData["HomePage"].Equals("/Functions"))
+                {
+                    return RedirectToAction("Functions", "Home");
+                }
                 return RedirectToAction("Index");
             }
 

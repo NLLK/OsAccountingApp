@@ -18,6 +18,7 @@ namespace OsAccountingApp1.Controllers
         // GET: pins
         public ActionResult Index()
         {
+            TempData["HomePage"] = "Index";
             var pin = db.pin.Include(p => p.MOL).Include(p => p.OS).OrderBy(p => p.date);
             return View(pin.ToList());
         }
@@ -36,10 +37,10 @@ namespace OsAccountingApp1.Controllers
             }
             return View(pin);
         }
-        [Authorize(Roles = "Admin")]
         // GET: pins/Create
         public ActionResult Create()
         {
+            if (TempData["HomePage"].Equals("/Functions")) ViewBag.HomePage = TempData["HomePage"];
             SelectList s = new SelectList(db.MOL, "id_mol", "molname");
 
             List<SelectListItem> sl = s.ToList();
@@ -75,6 +76,10 @@ namespace OsAccountingApp1.Controllers
             {
                 db.pin.Add(pin);
                 db.SaveChanges();
+                if (TempData["HomePage"].Equals("/Functions"))
+                {
+                    return RedirectToAction("Functions", "Home");
+                }
                 return RedirectToAction("Index");
             }
 

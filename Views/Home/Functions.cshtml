@@ -1,21 +1,40 @@
 ﻿@{
     ViewBag.Title = "Функции";
 }
-добавить мол
-прикрепить к отделу
-добавить ОС
-прикрепить Мол к ОС
 Карточка ОС (+подразделение, остаточная стоимость)
-изменить стоимость ОС
+
+отчеты: изменение стоимости ос, сколько людей в каждом отделе, какой Мол в каком отделе...
 <div class="row ">
-    <div class="col-sm-6">
-        <h1>Занятость сотрудников</h1>
-        <p>Отображает что делает каждый из сотрудников</p>
+    <div class="col-sm-3">
+        <h1>Добавить МОЛ</h1>
+        <p>Добавление МОЛ</p>
         <a href="/Functions/AddMOL" class="btn btn-primary" role="button">Добавить МОЛ</a>
     </div>
-    <div class="col-sm-6">
-        <h1>Незанятые работники</h1>
-        <p>Отображает работников, которые ничем не заняты</p>
-        <a href="/Functions/FreeEmployees" class="btn btn-primary" role="button">Выполнить запрос</a>
+    <div class="col-sm-5">
+        <h1>Прикрепить к отделу</h1>
+        <p>Выбор МОЛ и прикрепление, или переприкрепление, к отделу</p>
+        <a href="/Functions/AssignMOL" class="btn btn-primary" role="button">Выполнить запрос</a>
+    </div>
+    <div class="col-sm-4">
+        <h1>Добавить ОС</h1>
+        <p>Добавление ОС</p>
+        <a href="/Functions/AddOS" class="btn btn-primary" role="button">Добавить ОС</a>
+    </div>
+</div>
+<div class="row ">
+    <div class="col-sm-3">
+        <h1>Прикрепление</h1>
+        <p>Прикрепить МОЛ к ОС</p>
+        <a href="/Functions/PinMOL" class="btn btn-primary" role="button">Прикрепить МОЛ</a>
+    </div>
+    <div class="col-sm-5">
+        <h1>Изменить стоимость ОС</h1>
+        <p>Изменение стоимости ОС связи с перерасчетом или др.</p>
+        <a href="/Functions/CostChange" class="btn btn-primary" role="button">Выполнить запрос</a>
+    </div>
+    <div class="col-sm-4">
+        <h1>Добавить ОС</h1>
+        <p>Добавление ОС</p>
+        <a href="/Functions/AddOS" class="btn btn-primary" role="button">Добавить ОС</a>
     </div>
 </div>

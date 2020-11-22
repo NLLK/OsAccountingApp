@@ -18,5 +18,26 @@ namespace OsAccountingApp1.Controllers
             TempData["HomePage"] = "/Functions";
             return RedirectToAction("Create", "MOls");
         }
+        public ActionResult AssignMOL()
+        {
+            TempData["HomePage"] = "/Functions";
+            return RedirectToAction("Create", "assigments");
+        }
+        public ActionResult AddOS()
+        {
+            TempData["HomePage"] = "/Functions";
+            return RedirectToAction("Create", "OS");
+        }
+        public ActionResult PinMOL()
+        {
+            TempData["HomePage"] = "/Functions";
+            return RedirectToAction("Create", "Pins");
+        }
+        public ActionResult CostChange()
+        {
+            //TODO: добавить предыдущую цену
+            TempData["HomePage"] = "/Functions";
+            return RedirectToAction("Create", "costs");
+        }
     }
 }

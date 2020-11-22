@@ -20,6 +20,7 @@ namespace OsAccountingApp1.Controllers
         // GET: assigments
         public ActionResult Index()
         {
+            TempData["HomePage"] = "Index";
             var assigment = db.assigment.Include(a => a.MOL).Include(a => a.unit).OrderBy(a => a.arrivaldateunit);
             return View(assigment.ToList());
         }
@@ -42,6 +43,7 @@ namespace OsAccountingApp1.Controllers
         // GET: assigments/Create
         public ActionResult Create()
         {
+            if (TempData["HomePage"].Equals("/Functions")) ViewBag.HomePage = TempData["HomePage"];
             SelectList s = new SelectList(db.MOL, "id_mol", "molname");
 
             List<SelectListItem> sl = s.ToList();
@@ -78,6 +80,10 @@ namespace OsAccountingApp1.Controllers
             {
                 db.assigment.Add(assigment);
                 db.SaveChanges();
+                if (TempData["HomePage"].Equals("/Functions"))
+                {
+                    return RedirectToAction("Functions", "Home");
+                }
                 return RedirectToAction("Index");
             }
 
