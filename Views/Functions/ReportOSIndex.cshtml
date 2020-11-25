@@ -1,0 +1,15 @@
+﻿@model IEnumerable<OsAccountingApp1.Models.cost>
+
+@{
+    ViewBag.Title = "Цены ОС";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="row">
+    <label class="control-label col-md-2" for="id_os">ОС</label>
+    <div class="col-md-10">
+        @Html.DropDownList("id_os", null, htmlAttributes: new { @class = "form-control", @onclick = "getReportOS(this.value)" })
+    </div>
+</div>
+

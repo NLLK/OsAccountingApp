@@ -50,3 +50,22 @@ function getOsCard(id)
         }
     });
 }
+function getReportOS(id)
+{
+    var str = document.getElementById("id_os")[id - 1].label;
+
+    var arr = str.split(',');
+    id = arr[0];
+    var html = "https://" + window.location.host + "/Functions/ReportOSid/" + id;
+    window.location.replace(html);
+
+}
+function getReportMOL(id) {
+    var str = document.getElementById("id_mol")[id - 1].label;
+
+    var arr = str.split(',');
+    id = arr[0];
+    var html = "https://" + window.location.host + "/Functions/ReportMOLid/" + id;
+    window.location.replace(html);
+
+}

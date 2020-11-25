@@ -214,6 +214,7 @@
     <Compile Include="Models\MOL.cs">
       <DependentUpon>OsModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\MOLReportModel.cs" />
     <Compile Include="Models\OS.cs">
       <DependentUpon>OsModel.tt</DependentUpon>
     </Compile>
@@ -408,6 +409,9 @@
     <Content Include="Views\Home\Functions.cshtml" />
     <Content Include="Views\Home\Tables.cshtml" />
     <Content Include="Views\Functions\OScard.cshtml" />
+    <Content Include="Views\Functions\ReportOSIndex.cshtml" />
+    <Content Include="Views\Functions\ReportOSid.cshtml" />
+    <Content Include="Views\Functions\ReportMOL.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
