@@ -122,6 +122,33 @@ namespace OsAccountingApp1.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult Search()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Search([Bind(Include = "id_mol,molname,birthday,arivaldate")] MOL mOL)
+        {
+            IEnumerable<MOL> mols=db.MOL.ToList();
+            
+            if (!mOL.arivaldate.Equals(new DateTime(1,1,1,0,0,0)))
+            {
+                mols = mols.Where(m => m.arivaldate == mOL.arivaldate);
+            }
+            if (!mOL.birthday.Equals(new DateTime(1, 1, 1, 0, 0, 0)))
+            {
+                mols = mols.Where(m => m.birthday == mOL.birthday);
+            }
+            if (mOL.molname != null)
+            {
+                mols = mols.Where(m => m.molname == mOL.molname);
+            }
+
+            return View(mols);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
