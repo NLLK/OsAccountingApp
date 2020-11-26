@@ -21,7 +21,28 @@ namespace OsAccountingApp1.Controllers
             TempData["HomePage"] = "Index";
             return View(db.MOL.ToList().OrderBy(MOL => MOL.molname));
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Index([Bind(Include = "id_mol,molname,birthday,arivaldate")] MOL mOL)
+        {
+            IEnumerable<MOL> mols = db.MOL.ToList();
 
+            if (!mOL.arivaldate.Equals(new DateTime(1, 1, 1, 0, 0, 0)))
+            {
+                mols = mols.Where(m => m.arivaldate == mOL.arivaldate);
+            }
+            if (!mOL.birthday.Equals(new DateTime(1, 1, 1, 0, 0, 0)))
+            {
+                mols = mols.Where(m => m.birthday == mOL.birthday);
+            }
+            if (mOL.molname != null)
+            {
+                mols = mols.Where(m => m.molname == mOL.molname);
+            }
+
+            TempData["HomePage"] = "Index";
+            return View(mols.OrderBy(MOL => MOL.molname));
+        }
         // GET: MOLs/Details/5
         public ActionResult Details(int? id)
         {
@@ -127,27 +148,7 @@ namespace OsAccountingApp1.Controllers
             return View();
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Search([Bind(Include = "id_mol,molname,birthday,arivaldate")] MOL mOL)
-        {
-            IEnumerable<MOL> mols=db.MOL.ToList();
-            
-            if (!mOL.arivaldate.Equals(new DateTime(1,1,1,0,0,0)))
-            {
-                mols = mols.Where(m => m.arivaldate == mOL.arivaldate);
-            }
-            if (!mOL.birthday.Equals(new DateTime(1, 1, 1, 0, 0, 0)))
-            {
-                mols = mols.Where(m => m.birthday == mOL.birthday);
-            }
-            if (mOL.molname != null)
-            {
-                mols = mols.Where(m => m.molname == mOL.molname);
-            }
 
-            return View(mols);
-        }
 
         protected override void Dispose(bool disposing)
         {

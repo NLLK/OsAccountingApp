@@ -9,6 +9,68 @@
 <p>
     @Html.ActionLink("Добавить", "Create")
 </p>
+<a href="#spoiler-1" data-toggle="collapse" class="btn btn-primary">Поиск</a>
+<div class="collapse" id="spoiler-1">
+    <div class="well">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="id_class">Класс</label>
+                    <div class="col-md-10">
+                        @Html.DropDownList("id_class", null, htmlAttributes: new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="os_name">Наименование ОС</label>
+                    <div class="col-md-10">
+                        <input class="form-control text-box single-line"
+                               id="os_name" name="os_name" type="text" value="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="invertory_number">Инвертарный номер</label>
+                    <div class="col-md-10">
+                        <input class="form-control text-box single-line"
+                               id="invertory_number" name="invertory_number" type="text" value="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="wearrate">Норма износа</label>
+                    <div class="col-md-10">
+                        <input class="form-control text-box single-line"
+                               id="wearrate" name="wearrate" type="text" value="">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="service_start">Дата начала обслуживания</label>
+                    <div class="col-md-10">
+                        <input class="form-control text-box single-line"
+                               data-val="true"
+                               data-val-date="Поле Дата начала обслуживания должно содержать дату."
+                               id="service_start" name="service_start" type="date" value="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="service_time">Время обслуживания</label>
+                    <div class="col-md-10">
+                        <input class="form-control text-box single-line"
+                               id="service_time" name="service_time" type="number" value="">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Поиск" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
 <table class="table">
     <tr>
         <th>
@@ -32,32 +94,33 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.os_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.invertory_number)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.wearrate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.service_start)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.service_time)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.group.classname)
-        </td>
-        <td>
-            @Html.ActionLink("Изменить", "Edit", new { id=item.id_os }) |
-            @Html.ActionLink("Подробнее", "Details", new { id=item.id_os }) |
-            @Html.ActionLink("Удалить", "Delete", new { id=item.id_os })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.os_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.invertory_number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.wearrate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.service_start)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.service_time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.group.classname)
+            </td>
+            <td>
+                @Html.ActionLink("Изменить", "Edit", new { id = item.id_os }) |
+                @Html.ActionLink("Подробнее", "Details", new { id = item.id_os }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.id_os })
+            </td>
+        </tr>
+    }
 
 </table>
