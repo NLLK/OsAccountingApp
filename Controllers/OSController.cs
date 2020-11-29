@@ -146,7 +146,7 @@ namespace OsAccountingApp1.Controllers
             ViewBag.id_class = sl;
             return View(oS);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: OS/Edit/5
         public ActionResult Edit(int? id)
         {

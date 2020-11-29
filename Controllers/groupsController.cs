@@ -58,7 +58,7 @@ namespace OsAccountingApp1.Controllers
 
             return View(group);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: groups/Edit/5
         public ActionResult Edit(int? id)
         {

@@ -58,7 +58,7 @@ namespace OsAccountingApp1.Controllers
 
             return View(unit);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: units/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -77,6 +77,7 @@ namespace OsAccountingApp1.Controllers
         // POST: units/Edit/5
         // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
         // сведения см. в разделе https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "id_unit,unitname,adress")] unit unit)

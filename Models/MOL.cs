@@ -11,9 +11,7 @@ namespace OsAccountingApp1.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class MOL
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,19 +20,12 @@ namespace OsAccountingApp1.Models
             this.assigment = new HashSet<assigment>();
             this.pin = new HashSet<pin>();
         }
-        [DisplayName("Код сотрудника")]
+    
         public int id_mol { get; set; }
-        [DisplayName("ФИО")]
         public string molname { get; set; }
-        [DisplayName("Дата рождения")]
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public System.DateTime birthday { get; set; }
-        [DisplayName("Дата прибытия в организацию")]
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public System.DateTime arivaldate { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<assigment> assigment { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

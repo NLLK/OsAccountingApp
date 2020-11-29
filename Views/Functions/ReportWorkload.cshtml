@@ -1,7 +1,7 @@
-﻿@model IEnumerable<OsAccountingApp1.Models.MOLReportModel>
+﻿@model IEnumerable<OsAccountingApp1.Models.WorkLoadReportModel>
 
 @{
-    ViewBag.Title = "Отчет по МОЛ";
+    ViewBag.Title = "Загруженность отделов";
 }
 
 <h2>@ViewBag.Title</h2>
@@ -9,6 +9,9 @@
 <div class="row">
     <table class="table">
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.unit)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.molname)
             </th>
@@ -18,14 +21,15 @@
             <th>
                 @Html.DisplayNameFor(model => model.arrivaldateunit)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.unit)
-            </th>
+
         </tr>
 
         @foreach (var item in Model)
         {
             <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.unit)
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.molname)
                 </td>
@@ -35,9 +39,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.arrivaldateunit)
                 </td>
-                                <td>
-                    @Html.DisplayFor(modelItem => item.unit)
-                </td>
+
             </tr>
         }
     </table>

@@ -105,7 +105,7 @@ namespace OsAccountingApp1.Controllers
             ViewBag.id_os = ssl;
             return View(pin);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: pins/Edit/5
         public ActionResult Edit(int? id)
         {

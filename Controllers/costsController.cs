@@ -84,7 +84,6 @@ namespace OsAccountingApp1.Controllers
             ViewBag.id_os = sl;
             return View(cost);
         }
-
         // GET: costs/Edit/5
         public ActionResult Edit(int? id)
         {

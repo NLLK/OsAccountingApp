@@ -11,7 +11,7 @@ namespace OsAccountingApp1.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("Tables");
         }
         public ActionResult Functions()
         { 

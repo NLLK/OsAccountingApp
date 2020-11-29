@@ -39,7 +39,6 @@ namespace OsAccountingApp1.Controllers
             }
             return View(assigment);
         }
-        [Authorize(Roles = "Admin")]
         // GET: assigments/Create
         public ActionResult Create()
         {
@@ -112,6 +111,7 @@ namespace OsAccountingApp1.Controllers
             return View(assigment);
         }
         [Authorize]
+        [Authorize(Roles = "Admin")]
         // GET: assigments/Edit/5
         public ActionResult Edit(int? id)
         {

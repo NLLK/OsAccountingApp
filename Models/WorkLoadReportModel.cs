@@ -7,7 +7,7 @@ using System.Web;
 
 namespace OsAccountingApp1.Models
 {
-    public class MOLReportModel
+    public class WorkLoadReportModel
     {
         [DisplayName("ФИО")]
         public string molname { get; set; }

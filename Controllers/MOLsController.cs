@@ -87,6 +87,7 @@ namespace OsAccountingApp1.Controllers
         }
 
         // GET: MOLs/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)

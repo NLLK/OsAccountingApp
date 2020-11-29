@@ -5,13 +5,13 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="4dc608986bed4c86945c3e7fa15080a7" Name="Diagram1">
-        <EntityTypeShape EntityType="osaccountingModel.assigment" Width="1.5" PointX="5.25" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="osaccountingModel.cost" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="osaccountingModel.group" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="osaccountingModel.MOL" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="osaccountingModel.OS" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="osaccountingModel.pin" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="osaccountingModel.unit" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="osaccountingModel.assigment" Width="1.5" PointX="10.25" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="osaccountingModel.cost" Width="1.5" PointX="2.625" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="osaccountingModel.group" Width="1.5" PointX="2.625" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="osaccountingModel.MOL" Width="1.5" PointX="8.5" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="osaccountingModel.OS" Width="1.5" PointX="4.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="osaccountingModel.pin" Width="1.5" PointX="6.625" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="osaccountingModel.unit" Width="1.5" PointX="10.25" PointY="5.375" IsExpanded="true" />
         <AssociationConnector Association="osaccountingModel.FK_assigment_MOL" ManuallyRouted="false" />
         <AssociationConnector Association="osaccountingModel.FK_assigment_Unit" ManuallyRouted="false" />
         <AssociationConnector Association="osaccountingModel.FK_cost_OS" ManuallyRouted="false" />

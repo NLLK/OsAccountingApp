@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using OsAccountingApp1.Models;
 namespace OsAccountingApp1.Controllers
 {
+    [Authorize]
     public class FunctionsController : Controller
     {
         private osaccountingEntities db = new osaccountingEntities();
@@ -92,7 +93,7 @@ namespace OsAccountingApp1.Controllers
             ViewBag.os_name = oS.os_name;
             return View(cost);
         }
-        public ActionResult ReportMOL()
+        public ActionResult ReportWorkload()
         {
             SelectList s = new SelectList(db.MOL, "id_mol", "molname");
 
@@ -120,7 +121,11 @@ namespace OsAccountingApp1.Controllers
 
                 if (assignentBasicList[count - 1].id_mol == assigm.id_mol)
                 {
-                    continue;
+                    if (assignentBasicList[count - 1].arrivaldateunit < assigm.arrivaldateunit)
+                    {
+                        sortedList[count - 1] = assigm;
+                    }
+                    else continue;
                 }
                 else
                 {
@@ -129,14 +134,14 @@ namespace OsAccountingApp1.Controllers
                 }
             }
 
-            List<MOLReportModel> mollist = new List<MOLReportModel>();
+            List<WorkLoadReportModel> mollist = new List<WorkLoadReportModel>();
             foreach (assigment el in sortedList)
             {
-                mollist.Add(new MOLReportModel { molname = el.MOL.molname,
+                mollist.Add(new WorkLoadReportModel { molname = el.MOL.molname,
                     arrivaldateunit = el.arrivaldateunit, birthday = el.MOL.birthday, unit = el.unit.unitname });
             }
 
-            return View(mollist);
+            return View(mollist.OrderBy(m => m.unit));
         }
     }
 }
