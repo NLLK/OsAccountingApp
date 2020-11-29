@@ -11,14 +11,22 @@ namespace OsAccountingApp1.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class cost
     {
+        [DisplayName("Код элемента истории")]
         public int id_cost { get; set; }
+        [DisplayName("Код ОС")]
         public int id_os { get; set; }
+        [DisplayName("Цена")]
         public int cost1 { get; set; }
+        [DisplayName("Дата изменения цены")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public System.DateTime costchangedate { get; set; }
-    
+
         public virtual OS OS { get; set; }
     }
 }
