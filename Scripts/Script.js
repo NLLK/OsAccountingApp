@@ -1,7 +1,6 @@
 ﻿function getInfo(id)
 {
     var str = document.getElementById("id_os")[id-1].label;
-    
     var arr = str.split(',');
     id = arr[0];
     var d;
@@ -14,10 +13,9 @@
             document.getElementById("wearrate").innerHTML = d.wearrate; 
             document.getElementById("lastcost").innerHTML = d.lastCost; 
             document.getElementById("recomendedCost").innerHTML = d.recCost;
-
         },
-        error: function (x, y, z) {
-            alert(x + '\n' + y + '\n' + z);
+        error: function (p1, p2, p3) {
+            alert(p1 + '\n' + p2 + '\n' + p3);
         }
     });
 }

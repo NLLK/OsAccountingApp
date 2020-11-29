@@ -12,7 +12,7 @@
             {
                 @Html.AntiForgeryToken()
 
-                if(User.Identity.IsAuthenticated == false)
+                if(User.Identity.IsAuthenticated == false || User.IsInRole("User"))
                 {
                     <h4>Пожалуйста, войдите введите данные для входа в аккаунт.</h4>
                 }

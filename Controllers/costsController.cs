@@ -40,17 +40,19 @@ namespace OsAccountingApp1.Controllers
         // GET: costs/Create
         public ActionResult Create()
         {
-            if (TempData["HomePage"].Equals("/Functions")) ViewBag.HomePage = TempData["HomePage"];
-            SelectList s = new SelectList(db.OS, "id_os", "os_name");
+            if (TempData["HomePage"].Equals("/Functions"))
+                ViewBag.HomePage = TempData["HomePage"];
+            SelectList s = new SelectList(db.OS, "id_os", "os_name");//создание selectList с наим.ос, соответствующим id
 
-            List<SelectListItem> sl = s.ToList();
+            List<SelectListItem> sl = s.ToList(); //преобразование selectlist в list 
 
-            List<OS> sd = db.OS.ToList();//класс
-            for (int i = 0; i < sl.Count; i++)
+            List<OS> sd = db.OS.ToList();//создание list с ОС
+            for (int i = 0; i < sl.Count; i++)//для всех элеметов списка
             {
-                sl[i].Text = sd[i].id_os.ToString() + ", " + sd[i].os_name.ToString();//поля
+                sl[i].Text = sd[i].id_os.ToString() + ", " 
+                    + sd[i].os_name.ToString();//записываем id и наименование в список
             }
-            ViewBag.id_os = sl;
+            ViewBag.id_os = sl;//помещаем список в ViewBag
             return View();
         }
 

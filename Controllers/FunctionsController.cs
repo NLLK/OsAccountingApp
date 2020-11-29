@@ -83,8 +83,7 @@ namespace OsAccountingApp1.Controllers
 
             List<OS> sd = db.OS.ToList();//класс
             for (int i = 0; i < sl.Count; i++)
-            {
-
+            { 
                 sl[i].Text = sd[i].id_os.ToString() + ", " + sd[i].os_name.ToString();//поля
             }
             ViewBag.id_os = sl;
